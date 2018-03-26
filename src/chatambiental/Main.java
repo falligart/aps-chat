@@ -5,6 +5,8 @@
  */
 package chatambiental;
 
+import View.TelaLogin;
+
 /**
  *
  * @author jorge
@@ -16,6 +18,9 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        TelaLogin tl = new TelaLogin();
+        tl.setVisible(true);
+        tl.setLocationRelativeTo(null);
     }
     
 }
