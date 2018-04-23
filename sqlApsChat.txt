@@ -1,0 +1,65 @@
+create database ApsChat
+
+use database ApsChat;
+
+
+//Tabelas
+
+
+create table Clientes(
+    
+	cliNome varchar(30) not null,
+    
+	cliLogin varchar(15) not null,
+    
+	cliSenha varchar(15) not null,
+    
+	cliLocal varchar(50),
+    
+	primary key(cliNome)
+    
+)
+    
+
+
+
+create table Mensagens(
+
+    msgID int not null,
+
+    cliLogin varchar(15) not null,
+
+    msgContent varchar(255),
+
+    msgContentUrl varchar(255),
+
+    primary key(msgID),
+
+    foreign key(cliLogin) references Clientes(cliLogin)
+    
+)
+    
+
+
+//Procedures
+
+create or replace procedure UserRegister(nome, login, senha, localAcesso) 
+
+is begin
+
+    insert into Clientes values(nome, login, senha, localAcesso)
+
+exception
+
+end;
+
+
+
+create or replace procedure msgRegister(mId, login, conteudo, conteudoUrl) 
+
+is begin
+
+    insert into Clientes values(nome, login, senha, localAcesso)
+exception
+
+end;

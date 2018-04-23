@@ -5,18 +5,24 @@
  */
 package View;
 
+import chatambiental.Comunicacao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Math
  */
-public class TelaChat extends javax.swing.JFrame {
+public class TelaChat extends javax.swing.JPanel {
 
     /**
      * Creates new form TelaChat
      */
     public TelaChat() {
         initComponents();
+        new Thread(new Atualizar()).start();
     }
+    
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,37 +33,24 @@ public class TelaChat extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnHome = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnHome = new javax.swing.JButton();
         btnSettings = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jTxtChatPanel = new javax.swing.JTextPane();
+        JTxtFieldChatInput = new javax.swing.JTextField();
+        btnEnviarChat = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setText("Local de Acesso:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 25, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setText("Nivel de Acesso:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 45, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setText("Usuario:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Home.png"))); // NOI18N
         btnHome.setToolTipText("Menu principal");
@@ -65,7 +58,22 @@ public class TelaChat extends javax.swing.JFrame {
         btnHome.setBorderPainted(false);
         btnHome.setContentAreaFilled(false);
         btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 50, 50));
+        add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 50, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Linha.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 50, 70));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setText("Local de Acesso:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 25, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel5.setText("Nivel de Acesso:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 45, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setText("Usuario:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
 
         btnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Setting.png"))); // NOI18N
         btnSettings.setToolTipText("Configurações");
@@ -73,69 +81,7 @@ public class TelaChat extends javax.swing.JFrame {
         btnSettings.setBorderPainted(false);
         btnSettings.setContentAreaFilled(false);
         btnSettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(btnSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 50, 50));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Linha.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 50, 70));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/voltar.png"))); // NOI18N
-
-        jTextPane1.setText(":::::::::::::::::::::::::::::::Texto demonstração::::::::::::::::::::::::::::::::\n\n\n___________________________________________________________\n\n\nA partir de agora, você entrou em um ambiente seguro para que possa fazer suas denúncias envolvendo animais com total tranquilidade.\n\nA DEPA é um serviço via internet à disposição da população para denúncias de crimes ocorridos no Estado de São Paulo. É necessário identificar-se para fazer a denúncia e o sigilo dos dados serão preservados se optar pela privacidade no momento do cadastro da denúncia.\n\nAs providências tomadas pela polícia poderão ser acompanhadas através do número de protocolo gerado após a efetivação da denúncia, juntamente com o número do CPF do denunciante informado.\n\nATENÇÃO - FALSA COMUNICAÇÃO É CRIME\n\nA falsa comunicação de um crime também é crime e tem pena prevista no Artigo 340 do Código Penal Brasileiro. Todas as informações descritas aqui devem ser verdadeiras.\n\nPor mantermos centenas de animais em nosso abrigo, necessitados não só de cuidados básicos, mas de procedimentos médicos e cirúrgicos custosos. Muitos animais nos foram encaminhados pelas autoridades, justamente porque o poder público não dispõe de um órgão que possua instalações do gênero, com estrutura para recuperá-los e abrigá-los.");
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/enviar.png"))); // NOI18N
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/video.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Audio.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(630, 630, 630))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(584, 584, 584))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 920, 460));
+        add(btnSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 50, 50));
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Exit.png"))); // NOI18N
         btnExit.setToolTipText("Encerrar sessão");
@@ -143,64 +89,68 @@ public class TelaChat extends javax.swing.JFrame {
         btnExit.setBorderPainted(false);
         btnExit.setContentAreaFilled(false);
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 50, 50));
+        add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 50, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/PainelTop.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 70));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 70));
 
-        pack();
-        setLocationRelativeTo(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/voltar.png"))); // NOI18N
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 70, -1, -1));
+
+        jScrollPane1.setViewportView(jTxtChatPanel);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 70, 586, 290));
+        jPanel1.add(JTxtFieldChatInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 378, 529, -1));
+
+        btnEnviarChat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/enviar.png"))); // NOI18N
+        jPanel1.add(btnEnviarChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 378, -1, -1));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/video.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 172, 89, 96));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Audio.png"))); // NOI18N
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, 89, 96));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 920, 460));
     }// </editor-fold>//GEN-END:initComponents
 
+        public class Atualizar implements Runnable {
+        public void run() {
+            try {
+                    Comunicacao cm = new Comunicacao();
+                    String text = cm.mensagem();                            
+                    while(true){
+                        jTxtChatPanel.setText(""+text);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,ex);
+            }        
+        }
+        }
+    
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         TelaSelecaoArquivo tsa = new TelaSelecaoArquivo();
         tsa.setVisible(true);
         tsa.setLocationRelativeTo(null);
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaChat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaChat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaChat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaChat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaChat().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JTxtFieldChatInput;
+    private javax.swing.JButton btnEnviarChat;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSettings;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -210,7 +160,6 @@ public class TelaChat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTxtChatPanel;
     // End of variables declaration//GEN-END:variables
 }
